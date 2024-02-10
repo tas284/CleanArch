@@ -3,7 +3,7 @@ using CleanArch.Infrastructure.Context;
 
 namespace CleanArch.Infrastructure.Repositories
 {
-    public class UnitOfWork : IUnitOfWork, IDisposable
+    public class UnitOfWork : IUnitOfWork
     {
         private readonly IMemberRepository _memberRepository;
         private readonly AppDbContext _context;
@@ -24,11 +24,6 @@ namespace CleanArch.Infrastructure.Repositories
         public async Task CommitAsync()
         {
             await _context.SaveChangesAsync();
-        }
-
-        public void Dispose()
-        {
-            _context.Dispose();
         }
     }
 }
