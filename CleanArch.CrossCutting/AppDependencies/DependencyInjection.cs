@@ -15,15 +15,15 @@ namespace CleanArch.CrossCutting.AppDependencies
             IConfiguration configuration
             )
         {
-            //var mysqlConnection = configuration.GetConnectionString("DefaultConnection");
+            var mysqlConnection = configuration.GetConnectionString("DefaultConnection");
 
-            //services.AddDbContext<AppDbContext>(options =>
-            //{
-            //    options.UseMySql(mysqlConnection,
-            //        ServerVersion.AutoDetect(mysqlConnection));
-            //});
+            services.AddDbContext<AppDbContext>(options =>
+            {
+                options.UseMySql(mysqlConnection,
+                    ServerVersion.AutoDetect(mysqlConnection));
+            });
 
-            services.AddDbContext<AppDbContext>(opt => opt.UseInMemoryDatabase("CleanArch"));
+            //services.AddDbContext<AppDbContext>(opt => opt.UseInMemoryDatabase("CleanArch"));
 
             services.AddScoped<IMemberRepository, MemberRepository>();
             services.AddScoped<IUnitOfWork, UnitOfWork>();

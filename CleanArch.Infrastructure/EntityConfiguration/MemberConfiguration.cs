@@ -12,9 +12,9 @@ namespace CleanArch.Infrastructure.EntityConfiguration
             builder.Property(m => m.FirstName).HasMaxLength(100).IsRequired();
             builder.Property(m => m.LastName).HasMaxLength(100).IsRequired();
             builder.Property(m => m.Gender).HasMaxLength(10).IsRequired();
-            //builder.Property(m => m.Email).HasMaxLength(250).IsRequired();
-            //builder.Property(m => m.BirthDate).IsRequired();
-            //builder.Property(m => m.Active).IsRequired();
+            builder.Property(m => m.Email).HasMaxLength(250).IsRequired();
+            builder.Property(m => m.BirthDate).IsRequired();
+            builder.Property(m => m.Active).IsRequired();
 
             //builder.HasData(
             //    new Member(1, "Tiago", "Saldanha", "Masculino", "tiago.avila.saldanha@gmail.com", DateTime.Now, true),
