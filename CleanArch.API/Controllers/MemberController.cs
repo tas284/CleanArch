@@ -1,8 +1,6 @@
-﻿using CleanArch.API.Models;
-using CleanArch.Application.Commands;
+﻿using CleanArch.Application.Commands;
 using CleanArch.Application.Members.Commands;
-using CleanArch.Domain.Entities;
-using CleanArch.Domain.Interfaces;
+using CleanArch.Application.Members.Queries;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
@@ -12,19 +10,17 @@ namespace CleanArch.API.Controllers
     [ApiController]
     public class MemberController : ControllerBase
     {
-        private readonly IUnitOfWork _unitOfWork;
         private readonly IMediator _mediator;
 
-        public MemberController(IUnitOfWork unitOfWork, IMediator mediator)
+        public MemberController(IMediator mediator)
         {
-            _unitOfWork = unitOfWork;
             _mediator = mediator;
         }
 
         [HttpGet("")]
-        public IActionResult GetMembers()
+        public async Task<IActionResult> GetMembers()
         {
-            var members = _unitOfWork.MemberRepository.GetMembers();
+            var members = await _mediator.Send(new GetMembersQuery());
 
             return Ok(members);
         }
@@ -34,11 +30,12 @@ namespace CleanArch.API.Controllers
         {
             try
             {
-                var member = await _unitOfWork.MemberRepository.GetMemberById(id);
+                var query = new GetMemberByIdQuery { Id = id };
+                var member = await _mediator.Send(query);
 
                 return Ok(member);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 return BadRequest(ex.Message);
             }
@@ -55,20 +52,34 @@ namespace CleanArch.API.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdateMember(int id, UpdateMemberCommand command)
         {
-            command.Id = id;
-            var updatedMember = await _mediator.Send(command);
+            try
+            {
+                command.Id = id;
+                var updatedMember = await _mediator.Send(command);
 
-            return updatedMember == null ? NotFound("Member not found") : Ok(updatedMember);
+                return updatedMember == null ? NotFound("Member not found") : Ok(updatedMember);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
 
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteMember(int id)
         {
-            var command = new DeleteMemberCommand { Id = id };
+            try
+            {
+                var command = new DeleteMemberCommand { Id = id };
 
-            var deletedMember = await _mediator.Send(command);
+                var deletedMember = await _mediator.Send(command);
 
-            return deletedMember == null ? NotFound("Member not found.") : Ok(deletedMember);
+                return deletedMember == null ? NotFound("Member not found.") : Ok(deletedMember);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
     }
 }
