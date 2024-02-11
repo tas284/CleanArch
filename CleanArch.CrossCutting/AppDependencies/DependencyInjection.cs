@@ -23,7 +23,7 @@ namespace CleanArch.CrossCutting.AppDependencies
                     ServerVersion.AutoDetect(mysqlConnection));
             });
 
-            //services.AddDbContext<AppDbContext>(opt => opt.UseInMemoryDatabase("CleanArch"));
+            //services.AddDbContext<AppDbContext>(opt => opt.UseInMemoryDatabase("CleanArch")); /* Use DataBaseInMemory */
 
             services.AddScoped<IMemberRepository, MemberRepository>();
             services.AddScoped<IUnitOfWork, UnitOfWork>();
