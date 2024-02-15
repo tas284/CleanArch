@@ -57,7 +57,7 @@ namespace CleanArch.API.Controllers
                 command.Id = id;
                 var updatedMember = await _mediator.Send(command);
 
-                return updatedMember == null ? NotFound("Member not found") : Ok(updatedMember);
+                return Ok(updatedMember);
             }
             catch (Exception ex)
             {
@@ -71,10 +71,9 @@ namespace CleanArch.API.Controllers
             try
             {
                 var command = new DeleteMemberCommand { Id = id };
+                await _mediator.Send(command);
 
-                var deletedMember = await _mediator.Send(command);
-
-                return deletedMember == null ? NotFound("Member not found.") : Ok(deletedMember);
+                return NoContent();
             }
             catch (Exception ex)
             {

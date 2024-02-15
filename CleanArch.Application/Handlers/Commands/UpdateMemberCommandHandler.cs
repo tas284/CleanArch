@@ -18,9 +18,6 @@ namespace CleanArch.Application.Handlers.Commands
         {
             var member = await _unitOfWork.MemberRepository.GetMemberById(request.Id);
 
-            if (member == null)
-                throw new ArgumentNullException("Member not found.");
-
             request.UpdateToMember(member);
 
             _unitOfWork.MemberRepository.UpdateMember(member);

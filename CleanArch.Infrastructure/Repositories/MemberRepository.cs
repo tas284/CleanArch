@@ -1,6 +1,7 @@
 ﻿using CleanArch.Domain.Entities;
 using CleanArch.Domain.Interfaces;
 using CleanArch.Infrastructure.Context;
+using CleanArch.Infrastructure.Exceptions;
 
 namespace CleanArch.Infrastructure.Repositories
 {
@@ -18,7 +19,7 @@ namespace CleanArch.Infrastructure.Repositories
             var member = await _db.Members.FindAsync(id);
 
             if (member == null)
-                throw new InvalidOperationException("Member not found");
+                throw new MemberNotFoundException("Member not found");
 
             return member;
         }
@@ -46,16 +47,11 @@ namespace CleanArch.Infrastructure.Repositories
             return member;
         }
 
-        public async Task<Member> DeleteMember(int memberId)
+        public async Task DeleteMember(int memberId)
         {
             var member = await GetMemberById(memberId);
 
-            if (member == null)
-                throw new InvalidOperationException("Member not found");
-
             _db.Members.Remove(member);
-
-            return member;
         }
     }
 }

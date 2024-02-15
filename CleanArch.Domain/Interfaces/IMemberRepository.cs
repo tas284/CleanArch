@@ -8,6 +8,6 @@ namespace CleanArch.Domain.Interfaces
         Task<Member> GetMemberById(int id);
         Task<Member> AddMember(Member member);
         void UpdateMember(Member member);
-        Task<Member> DeleteMember(int memberId);
+        Task DeleteMember(int memberId);
     }
 }
