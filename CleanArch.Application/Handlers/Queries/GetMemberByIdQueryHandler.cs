@@ -1,8 +1,9 @@
-﻿using CleanArch.Domain.Entities;
+﻿using CleanArch.Application.Members.Queries;
+using CleanArch.Domain.Entities;
 using CleanArch.Domain.Interfaces;
 using MediatR;
 
-namespace CleanArch.Application.Members.Queries
+namespace CleanArch.Application.Handlers.Queries
 {
     public class GetMemberByIdQueryHandler : IRequestHandler<GetMemberByIdQuery, Member>
     {

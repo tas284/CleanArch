@@ -1,8 +1,9 @@
-﻿using CleanArch.Domain.Entities;
+﻿using CleanArch.Application.Members.Commands;
+using CleanArch.Domain.Entities;
 using CleanArch.Domain.Interfaces;
 using MediatR;
 
-namespace CleanArch.Application.Members.Commands
+namespace CleanArch.Application.Handlers.Commands
 {
     public class DeleteMemberCommandHandler : IRequestHandler<DeleteMemberCommand, Member>
     {

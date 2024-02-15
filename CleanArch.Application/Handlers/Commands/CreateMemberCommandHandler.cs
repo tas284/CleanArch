@@ -1,8 +1,9 @@
-﻿using CleanArch.Domain.Entities;
+﻿using CleanArch.Application.Commands;
+using CleanArch.Domain.Entities;
 using CleanArch.Domain.Interfaces;
 using MediatR;
 
-namespace CleanArch.Application.Commands
+namespace CleanArch.Application.Handlers.Commands
 {
     public class CreateMemberCommandHandler : IRequestHandler<CreateMemberCommand, Member>
     {
@@ -16,7 +17,7 @@ namespace CleanArch.Application.Commands
         public async Task<Member> Handle(CreateMemberCommand request, CancellationToken cancellationToken)
         {
             var member = new Member(request.FirstName, request.LastName, request.Gender, request.Email, request.BirthDate, request.Active);
-            
+
             await _unitOfWork.MemberRepository.AddMember(member);
             await _unitOfWork.CommitAsync();
 

@@ -1,8 +1,9 @@
-﻿using CleanArch.Domain.Entities;
+﻿using CleanArch.Application.Commands;
+using CleanArch.Domain.Entities;
 using CleanArch.Domain.Interfaces;
 using MediatR;
 
-namespace CleanArch.Application.Commands
+namespace CleanArch.Application.Handlers.Commands
 {
     public class UpdateMemberCommandHandler : IRequestHandler<UpdateMemberCommand, Member>
     {
