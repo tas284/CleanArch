@@ -18,7 +18,7 @@ namespace CleanArch.Application.Handlers.Commands
         {
             var member = await _unitOfWork.MemberRepository.GetMemberById(request.Id);
 
-            request.UpdateToMember(member);
+            request.UpdateMember(member);
 
             _unitOfWork.MemberRepository.UpdateMember(member);
             await _unitOfWork.CommitAsync();
