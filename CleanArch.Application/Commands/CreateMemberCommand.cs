@@ -11,5 +11,7 @@ namespace CleanArch.Application.Commands
         public string? Email { get; set; }
         public DateTime BirthDate { get; set; }
         public bool Active { get; set; }
+
+        public Member ToEntity() => new Member(this.FirstName, this.LastName, this.Gender, this.Email, this.BirthDate, this.Active);
     }
 }

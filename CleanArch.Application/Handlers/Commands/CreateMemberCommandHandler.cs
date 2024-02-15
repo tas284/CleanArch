@@ -16,7 +16,7 @@ namespace CleanArch.Application.Handlers.Commands
 
         public async Task<Member> Handle(CreateMemberCommand request, CancellationToken cancellationToken)
         {
-            var member = new Member(request.FirstName, request.LastName, request.Gender, request.Email, request.BirthDate, request.Active);
+            var member = request.ToEntity();
 
             await _unitOfWork.MemberRepository.AddMember(member);
             await _unitOfWork.CommitAsync();

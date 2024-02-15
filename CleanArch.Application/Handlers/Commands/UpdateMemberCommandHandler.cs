@@ -16,21 +16,16 @@ namespace CleanArch.Application.Handlers.Commands
 
         public async Task<Member> Handle(UpdateMemberCommand request, CancellationToken cancellationToken)
         {
-            var updateMember = await _unitOfWork.MemberRepository.GetMemberById(request.Id);
+            var member = await _unitOfWork.MemberRepository.GetMemberById(request.Id);
 
-            if (updateMember == null)
-                throw new ArgumentException("Member not found.");
+            if (member == null)
+                throw new ArgumentNullException("Member not found.");
 
-            updateMember.FirstName = request.FirstName;
-            updateMember.LastName = request.LastName;
-            updateMember.Gender = request.Gender;
-            updateMember.Email = request.Email;
-            updateMember.BirthDate = request.BirthDate;
-            updateMember.Active = request.Active;
+            request.UpdateToMember(member);
 
-            _unitOfWork.MemberRepository.UpdateMember(updateMember);
+            _unitOfWork.MemberRepository.UpdateMember(member);
             await _unitOfWork.CommitAsync();
-            return updateMember;
+            return member;
         }
     }
 }

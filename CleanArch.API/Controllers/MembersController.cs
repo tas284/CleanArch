@@ -8,11 +8,11 @@ namespace CleanArch.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class MembersController : ControllerBase
+    public class MemberController : ControllerBase
     {
         private readonly IMediator _mediator;
 
-        public MembersController(IMediator mediator)
+        public MemberController(IMediator mediator)
         {
             _mediator = mediator;
         }
