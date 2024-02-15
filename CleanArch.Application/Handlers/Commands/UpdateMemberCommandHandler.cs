@@ -16,7 +16,7 @@ namespace CleanArch.Application.Handlers.Commands
 
         public async Task<Member> Handle(UpdateMemberCommand request, CancellationToken cancellationToken)
         {
-            var member = await _unitOfWork.MemberRepository.GetMemberById(request.Id);
+            var member = await _unitOfWork.MemberDapperRepository.GetMemberById(request.Id);
 
             request.UpdateMember(member);
 

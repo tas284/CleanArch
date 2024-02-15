@@ -5,6 +5,8 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.InMemory;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using MySqlConnector;
+using System.Data;
 
 namespace CleanArch.CrossCutting.AppDependencies
 {
@@ -23,8 +25,16 @@ namespace CleanArch.CrossCutting.AppDependencies
                     ServerVersion.AutoDetect(mysqlConnection));
             });
 
+            services.AddSingleton<IDbConnection>(provider =>
+            {
+                var connection = new MySqlConnection(mysqlConnection);
+                connection.Open();
+                return connection;
+            });
+
             //services.AddDbContext<AppDbContext>(opt => opt.UseInMemoryDatabase("CleanArch")); /* Use DataBaseInMemory */
 
+            services.AddScoped<IMemberDapperRepository, MemberDapperRepository>();
             services.AddScoped<IMemberRepository, MemberRepository>();
             services.AddScoped<IUnitOfWork, UnitOfWork>();
 

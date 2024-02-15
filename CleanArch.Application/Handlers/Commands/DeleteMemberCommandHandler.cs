@@ -16,10 +16,7 @@ namespace CleanArch.Application.Handlers.Commands
 
         public async Task Handle(DeleteMemberCommand request, CancellationToken cancellationToken)
         {
-            var deleteMember = await _unitOfWork.MemberRepository.GetMemberById(request.Id);
-
-            if (deleteMember == null)
-                throw new ArgumentNullException("Member not found.");
+            var deleteMember = await _unitOfWork.MemberDapperRepository.GetMemberById(request.Id);
 
             await _unitOfWork.MemberRepository.DeleteMember(request.Id);
             await _unitOfWork.CommitAsync();

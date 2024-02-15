@@ -14,11 +14,10 @@ namespace CleanArch.Application.Handlers.Queries
             _unitOfWork = unitOfWork;
         }
 
-        public Task<IEnumerable<Member>> Handle(GetMembersQuery request, CancellationToken cancellationToken)
+        public async Task<IEnumerable<Member>> Handle(GetMembersQuery request, CancellationToken cancellationToken)
         {
-            var members = _unitOfWork.MemberRepository.GetMembers();
-
-            return Task.FromResult(members);
+            var members = await _unitOfWork.MemberDapperRepository.GetMembers();
+            return members;
         }
     }
 }

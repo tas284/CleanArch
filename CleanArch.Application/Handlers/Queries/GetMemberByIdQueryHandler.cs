@@ -16,11 +16,7 @@ namespace CleanArch.Application.Handlers.Queries
 
         public async Task<Member> Handle(GetMemberByIdQuery request, CancellationToken cancellationToken)
         {
-            var member = await _unitOfWork.MemberRepository.GetMemberById(request.Id);
-
-            if (member == null)
-                throw new ArgumentNullException("Member not found");
-
+            var member = await _unitOfWork.MemberDapperRepository.GetMemberById(request.Id);
             return member;
         }
     }

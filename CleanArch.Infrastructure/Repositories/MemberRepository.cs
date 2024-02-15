@@ -14,7 +14,7 @@ namespace CleanArch.Infrastructure.Repositories
             _db = db;
         }
 
-        public async Task<Member> GetMemberById(int id)
+        private async Task<Member> GetMemberById(int id)
         {
             var member = await _db.Members.FindAsync(id);
 
@@ -22,12 +22,6 @@ namespace CleanArch.Infrastructure.Repositories
                 throw new MemberNotFoundException("Member not found");
 
             return member;
-        }
-
-        public IEnumerable<Member> GetMembers()
-        {
-            var members = _db.Members.ToList();
-            return members ?? Enumerable.Empty<Member>();
         }
 
         public void UpdateMember(Member member)
@@ -50,7 +44,6 @@ namespace CleanArch.Infrastructure.Repositories
         public async Task DeleteMember(int memberId)
         {
             var member = await GetMemberById(memberId);
-
             _db.Members.Remove(member);
         }
     }
