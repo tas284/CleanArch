@@ -7,14 +7,6 @@ namespace CleanArch.Application.Commands
     {
         public int Id { get; set; }
 
-        public void UpdateMember(Member member)
-        {
-            member.FirstName = FirstName;
-            member.LastName = LastName;
-            member.Gender = Gender;
-            member.Email = Email;
-            member.BirthDate = BirthDate;
-            member.Active = Active;
-        }
+        public void UpdateMember(Member member) => member.Update(FirstName, LastName, Gender, Email, BirthDate, Active);
     }
 }
