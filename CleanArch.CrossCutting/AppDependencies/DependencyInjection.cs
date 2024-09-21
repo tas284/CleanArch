@@ -12,10 +12,7 @@ namespace CleanArch.CrossCutting.AppDependencies
 {
     public static class DependencyInjection
     {
-        public static IServiceCollection AddInfrastructure(
-            this IServiceCollection services,
-            IConfiguration configuration
-            )
+        public static IServiceCollection AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
         {
             var mysqlConnection = configuration.GetConnectionString("DefaultConnection");
 

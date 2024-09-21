@@ -1,5 +1,4 @@
-﻿using CleanArch.Domain.Abstractions;
-using CleanArch.Domain.Validations;
+﻿using CleanArch.Domain.Validations;
 using System.Text.Json.Serialization;
 
 namespace CleanArch.Domain.Entities
