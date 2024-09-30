@@ -5,13 +5,15 @@ VisualStudioVersion = 17.2.32630.192
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CleanArch.Domain", "CleanArch.Domain\CleanArch.Domain.csproj", "{447C787D-E3D9-4D0D-A407-97A89EB0CE79}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CleanArch.Application", "CleanArch.Application\CleanArch.Application.csproj", "{F3D1A6B5-8561-40DB-823D-22D3F3D7041C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CleanArch.Application", "CleanArch.Application\CleanArch.Application.csproj", "{F3D1A6B5-8561-40DB-823D-22D3F3D7041C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CleanArch.Infrastructure", "CleanArch.Infrastructure\CleanArch.Infrastructure.csproj", "{6B19C5A6-87D2-4D74-9038-B00ACE204050}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CleanArch.Infrastructure", "CleanArch.Infrastructure\CleanArch.Infrastructure.csproj", "{6B19C5A6-87D2-4D74-9038-B00ACE204050}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CleanArch.API", "CleanArch.API\CleanArch.API.csproj", "{58D47C08-E1C9-4B01-8F9D-2DB763FFAE46}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CleanArch.API", "CleanArch.API\CleanArch.API.csproj", "{58D47C08-E1C9-4B01-8F9D-2DB763FFAE46}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CleanArch.CrossCutting", "CleanArch.CrossCutting\CleanArch.CrossCutting.csproj", "{629ECDA4-0D01-4F65-A7CA-D1C11133B7FD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CleanArch.CrossCutting", "CleanArch.CrossCutting\CleanArch.CrossCutting.csproj", "{629ECDA4-0D01-4F65-A7CA-D1C11133B7FD}"
+EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{667E4C29-28D4-4631-BE04-2067DF623474}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{629ECDA4-0D01-4F65-A7CA-D1C11133B7FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{629ECDA4-0D01-4F65-A7CA-D1C11133B7FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{629ECDA4-0D01-4F65-A7CA-D1C11133B7FD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{667E4C29-28D4-4631-BE04-2067DF623474}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{667E4C29-28D4-4631-BE04-2067DF623474}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{667E4C29-28D4-4631-BE04-2067DF623474}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{667E4C29-28D4-4631-BE04-2067DF623474}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

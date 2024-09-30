@@ -1,0 +1,39 @@
+services:
+  db:
+    container_name: mysql
+    image: mysql/mysql-server
+    restart: always
+    environment:
+      - "MYSQL_RANDOM_ROOT_PASSWORD=true"
+      - "MYSQL_USER=clean"
+      - "MYSQL_PASSWORD=Ik411@"
+      - "MYSQL_DATABASE=MembersDB"
+    ports:
+      - 3306:3306
+    volumes:
+      - mysql:/var/lib/mysql
+    networks:
+      - backend
+
+  cleanarch.api:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=https://+:443;http://+:80
+      - "ConnectionStrings__DefaultConnection=Server=db;Database=MembersDB;Uid=clean;Pwd=Ik411@;"
+    depends_on:
+      - db
+    ports:
+      - "80"
+      - "443"
+    volumes:
+      - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
+      - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
+    networks:
+      - backend
+
+networks:
+  backend:
+    name: backend
+volumes:
+  mysql:
+    name: mysql

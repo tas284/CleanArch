@@ -1,0 +1,6 @@
+services:
+  cleanarch.api:
+    image: ${DOCKER_REGISTRY-}cleanarchapi
+    build:
+      context: .
+      dockerfile: CleanArch.API/Dockerfile
