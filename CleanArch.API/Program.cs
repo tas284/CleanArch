@@ -1,4 +1,5 @@
 using CleanArch.CrossCutting.AppDependencies;
+using System.Net;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -21,5 +22,7 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
+
+ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
 
 app.Run();

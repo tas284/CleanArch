@@ -16,6 +16,9 @@ services:
       - backend
 
   cleanarch.api:
+    container_name: cleanarchapi
+    image: tiagosaldanha/cleanarchapi:latest
+    restart: always
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_URLS=https://+:443;http://+:80
@@ -34,6 +37,7 @@ services:
 networks:
   backend:
     name: backend
+    external: true
 volumes:
   mysql:
     name: mysql

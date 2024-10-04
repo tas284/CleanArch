@@ -2,7 +2,6 @@
 using CleanArch.Infrastructure.Context;
 using CleanArch.Infrastructure.Repositories;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.InMemory;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using MySqlConnector;
@@ -28,8 +27,6 @@ namespace CleanArch.CrossCutting.AppDependencies
                 connection.Open();
                 return connection;
             });
-
-            //services.AddDbContext<AppDbContext>(opt => opt.UseInMemoryDatabase("CleanArch")); /* Use DataBaseInMemory */
 
             services.AddScoped<IMemberDapperRepository, MemberDapperRepository>();
             services.AddScoped<IMemberRepository, MemberRepository>();
